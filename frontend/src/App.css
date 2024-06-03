@@ -1,0 +1,7 @@
+.group {
+    border: 1px solid royalblue;
+}
+
+td, th {
+    border: 1px solid darkgray;
+}
