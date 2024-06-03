@@ -11,7 +11,7 @@ const BuildTable = (index) => {
     
     //информация о наличии таблицы в Базе данных
     useEffect(() => {
-        fetch(`http://95.174.90.246:8000/api/like`)
+        fetch(`http://localhost:8000/api/like`)
             .then(res => {return res.text()})
             .then(result => {
                 if(result === "1") {
@@ -25,7 +25,7 @@ const BuildTable = (index) => {
     
     //создание таблицы
     function createTable() {
-        fetch('http://95.174.90.246:8000/api/create')
+        fetch('http://localhost:8000/api/create')
         .then(res => res.text())
         .then(res => setResultCtreateTable(res));
 
@@ -36,7 +36,7 @@ const BuildTable = (index) => {
     
     //удаление таблицы
     function deleteTable() {
-        fetch('http://95.174.90.246:8000/api/drop')
+        fetch('http://localhost:8000/api/drop')
         .then(res => res.text())
         .then(res => setResultDeleteTable(res));
 

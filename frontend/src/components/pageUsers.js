@@ -12,7 +12,7 @@ const BuildUser = (index) => {
     const [infoCreate, setInfoCreate] = useState(''); //информация о добавлении пользователя
 
     function createUser() {
-        fetch(`http://95.174.90.246:8000/api/insert/${name}/${surname}/${age}`)
+        fetch(`http://localhost:8000/api/insert/${name}/${surname}/${age}`)
             .then(response => response.text())
             .then(response => setInfoCreate(response.replaceAll('"', '')))
             .catch(err => setInfoCreate(err));
@@ -25,7 +25,7 @@ const BuildUser = (index) => {
     const [infoSearch, setInfoSearch] = useState(''); //информация о поиске пользователя
 
     function searchUser() {
-        fetch(`http://95.174.90.246:8000/api/search/${idSearch}`)
+        fetch(`http://localhost:8000/api/search/${idSearch}`)
             .then(response => response.json())
             .then(response => {
                 if (typeof(response) == 'object') {
@@ -43,7 +43,7 @@ const BuildUser = (index) => {
     const [infoDelete, setInfoDelete] = useState(''); //информация об удалении
 
     function deleteUser() {
-        fetch(`http://95.174.90.246:8000/api/delete/${idDelete}`)
+        fetch(`http://localhost:8000/api/delete/${idDelete}`)
             .then(response => response.json())
             .then(response => setInfoDelete(response))
             .catch(err => setInfoDelete(err));
@@ -55,13 +55,13 @@ const BuildUser = (index) => {
     const [infoTable, setInfoTable] = useState(''); //информация о данный в таблице
     
     useEffect(() => {
-        fetch('http://95.174.90.246:8000/api/allusers')
+        fetch('http://localhost:8000/api/allusers')
             .then(response => {return response.json()})
             .then(response => {setDataUsers(response)});
     }, [infoCreate, infoDelete, infoTable]);
     
     function updateUsers() {
-        fetch("http://95.174.90.246:8000/api/allusers")
+        fetch("http://localhost:8000/api/allusers")
             .then(response => response.json())
             .then(response => setDataUsers(response));
     }
@@ -69,7 +69,7 @@ const BuildUser = (index) => {
 
     //удалить всех пользователей из таблицы
     function deleteAllUsers() {
-        fetch("http://95.174.90.246:8000/api/truncate")
+        fetch("http://localhost:8000/api/truncate")
             .then(response => response.text())
             .then(response => setInfoTable(response));
     }
